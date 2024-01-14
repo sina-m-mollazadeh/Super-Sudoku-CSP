@@ -1,5 +1,6 @@
 import numpy as np
-
+from os import system
+system("clear")
 #all the inputs
 array = []
 for _ in range(9):
@@ -17,9 +18,12 @@ for _ in range(num_cases):
     right_numbers.append([int (num) for num in case_input[split_index + 1:]])
 
 
-
-
-print(left_numbers)
-print(right_numbers)
 array=np.array(array)
 array=array.reshape(1,81)
+
+for i in range(len(left_numbers)):
+    if(len(left_numbers[i])==1):
+        array[0][(left_numbers[i])[0]]=(right_numbers[i])[0]
+
+for row in array:
+    print(row)
