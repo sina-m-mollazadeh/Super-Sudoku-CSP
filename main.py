@@ -1,20 +1,25 @@
 import numpy as np
-print("Welcome to this sudoku solver")
-board=np.array([[6 ,0 ,9 ,0 ,0 ,7 ,0 ,3 ,0],
-                [0 ,0 ,0 ,0 ,9 ,0 ,0 ,0 ,6],
-                [0 ,2 ,0 ,0 ,0 ,3 ,9 ,4 ,0],
-                [0 ,0 ,0 ,0 ,8 ,2 ,7 ,0 ,0],
-                [2 ,0 ,8 ,0 ,7 ,0 ,0 ,0 ,3],
-                [0 ,0 ,0 ,9 ,1 ,6 ,0 ,8 ,0],
-                [0 ,0 ,2 ,0 ,0 ,0 ,0 ,1 ,4],
-                [3 ,0 ,4 ,6 ,5 ,0 ,8 ,0 ,0],
-                [1 ,0 ,5 ,0 ,0 ,9 ,0 ,0 ,0]])
-n=int(input("Please enter the number of cages: "))
-listCages=[]
-for i in range(n):
-    str=input()
-    listCages.append(str)
-first=listCages[0].split(" ")
-print(first)
-print(n)
-print(board)
+
+#all the inputs
+array = []
+for _ in range(9):
+    row_input = input().split()
+    row = [int(num) for num in row_input]
+    array.append(row)
+formatted_input = []
+num_cases = int(input())
+left_numbers=[]
+right_numbers=[]
+for _ in range(num_cases):
+    case_input = input().split()
+    split_index = case_input.index('>')
+    left_numbers.append([int(num) for num in case_input[:split_index]])
+    right_numbers.append([int (num) for num in case_input[split_index + 1:]])
+
+
+
+
+print(left_numbers)
+print(right_numbers)
+array=np.array(array)
+array=array.reshape(1,81)
