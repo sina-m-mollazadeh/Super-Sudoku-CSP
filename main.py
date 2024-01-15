@@ -6,11 +6,11 @@ from printBoard import print_grid
 
 console_width = os.get_terminal_size().columns
 os.system('cls' if os.name == 'nt' else 'clear')
-pad1=floor((console_width-8)/2)
-pad2=floor((console_width-24)/2)
-print("*"*pad1,"Welcome","*" *pad1,end="")
-print("+"*pad2,"Please Enter the Sudoku","+" *pad2,end="")
-
+pad1=floor((console_width-7)/2)
+pad2=floor((console_width-23)/2)
+print("*"*pad1,"Welcome","*" *pad1)
+print("+"*pad2,"Please Enter the Sudoku","+" *pad2)
+print("")
 
 #all the inputs
 array = []
@@ -32,7 +32,9 @@ for _ in range(num_cases):
 
 
 array=np.array(array)
-array=array.reshape(1,81)
+for row in array:
+    print(row)
+array1D=array.reshape(1,81)
 left_conditions=[]
 right_conditions=[]
 
@@ -44,6 +46,38 @@ for i in range(len(left_numbers)):
         left_conditions.append(left_numbers[i])
         right_conditions.append(right_numbers[i])
 #now we have a fixed Sudoku table and we are ready to do pruning and .....
-        
+def generate_solutions(n, k, current_solution=[]):
+    if k == 0:
+        # Check if the current solution satisfies the equation sum
+        if sum(current_solution) == n:
+            yield tuple(current_solution)
+        return
 
-print_grid(array[0])
+    for i in range(11):  # Values from 0 to 10 (inclusive)
+        # Try the current value
+        current_solution.append(i)
+
+        # Recursively generate solutions for the remaining variables
+        yield from generate_solutions(n, k - 1, current_solution)
+
+        # Backtrack: remove the last value to try the next one
+        current_solution.pop()
+for i in range(len(right_conditions)):
+    sumInside=0
+    count=0
+    index=[]
+    for j in left_conditions[i]:
+        if(array1D[0][j]!=0):
+            sumInside+=array1D[0][j]
+        else:
+            count+=1
+            index.append(j)
+        
+    listS=list(generate_solutions((right_conditions[i])[0]-sumInside,count))
+    if(len(listS)==1):
+        array1D[0][index[0]]=(listS[0])[0]
+
+for row in array:
+    print(row)
+
+# print_grid(array1D[0])
