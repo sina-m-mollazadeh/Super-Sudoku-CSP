@@ -1,5 +1,6 @@
 import numpy as np
 from math import floor
+from solve import isValid
 import os
 
 from printBoard import print_grid
@@ -32,8 +33,7 @@ for _ in range(num_cases):
 
 
 array=np.array(array)
-for row in array:
-    print(row)
+
 array1D=array.reshape(1,81)
 left_conditions=[]
 right_conditions=[]
@@ -62,6 +62,9 @@ def generate_solutions(n, k, current_solution=[]):
 
         # Backtrack: remove the last value to try the next one
         current_solution.pop()
+
+array2D=[]
+#Do what is neccesary
 for i in range(len(right_conditions)):
     sumInside=0
     count=0
@@ -74,10 +77,17 @@ for i in range(len(right_conditions)):
             index.append(j)
         
     listS=list(generate_solutions((right_conditions[i])[0]-sumInside,count))
-    if(len(listS)==1):
+    if(len(listS)==1) and (listS[0])[0]<10:
         array1D[0][index[0]]=(listS[0])[0]
 
-for row in array:
-    print(row)
 
-# print_grid(array1D[0])
+        
+    array2D=array1D.reshape(9,9)
+
+#rest
+isValidTemp=True
+for i in range(9):
+    if(isValid(array2D,i)==False):
+        print("No")
+        exit()
+print_grid(array1D[0])
