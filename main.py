@@ -3,8 +3,7 @@ from math import floor
 from read import read_specific_line
 from printBoard import print_grid
 import os
-from printBoard import print_grid
-from solve import solve_sudoku
+from solve import Suduko
 
 
 
@@ -59,7 +58,8 @@ left_conditions = [[[int(digit)-1 for digit in str(number)] for number in sublis
 
 
 
-solution = solve_sudoku(array, zip(left_conditions, right_conditions))
-
+if (Suduko(array, 0, 0,zip(left_conditions, right_conditions))):
+    print_grid(array)
+else:
+    print("Solution does not exist:(")
 # Print the solution
-print_grid(solution)

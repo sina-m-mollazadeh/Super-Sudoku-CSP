@@ -1,12 +1,9 @@
 import os
 import numpy as np
-def clear_console():
 
-    os.system('cls' if os.name == 'nt' else 'clear')
 def print_grid(array):
     array=np.array(array)
     array=array.reshape(1,81)[0]
-    clear_console()
 
     # Set ANSI escape code for red text
     red_text = "\033[1;31m"
