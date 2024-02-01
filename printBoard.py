@@ -1,12 +1,11 @@
 import os
+import numpy as np
 def clear_console():
 
     os.system('cls' if os.name == 'nt' else 'clear')
 def print_grid(array):
-    if len(array) != 81:
-        print("Error: Input array should have exactly 81 elements.")
-        return
-
+    array=np.array(array)
+    array=array.reshape(1,81)[0]
     clear_console()
 
     # Set ANSI escape code for red text
