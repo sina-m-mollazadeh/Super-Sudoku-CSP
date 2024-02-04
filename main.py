@@ -28,11 +28,11 @@ print("")
 #all the inputs
 array = []
 for i in range(1,10):
-    row_input = (str(read_specific_line('testCase.txt',i))).split()
+    row_input = (str(read_specific_line('testCase2.txt',i))).split()
     row = [int(num) for num in row_input]
     array.append(row)
 formatted_input = []
-num_cases=(int(str((read_specific_line('testCase.txt',10)))))
+num_cases=(int(str((read_specific_line('testCase2.txt',10)))))
 
 
 
@@ -42,7 +42,7 @@ num_cases=(int(str((read_specific_line('testCase.txt',10)))))
 left_numbers=[]
 right_conditions=[]
 for i in range(1,num_cases+1):
-    case_input = (str(read_specific_line('testCase.txt',i+10))).split()
+    case_input = (str(read_specific_line('testCase2.txt',i+10))).split()
     split_index = case_input.index('>')
     left_numbers.append([int(num) for num in case_input[:split_index]])
     right_conditions.append([int (num) for num in case_input[split_index + 1:]])

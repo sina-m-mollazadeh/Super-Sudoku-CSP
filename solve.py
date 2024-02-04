@@ -1,4 +1,3 @@
-M=9
 def solve(grid, row, col, num,constraints):
     for x in range(9):
         if grid[row][x] == num:
@@ -34,9 +33,7 @@ def Suduko(grid, row, col,constraint):
     if grid[row][col] > 0:
         return Suduko(grid, row, col + 1,constraint)
     for num in range(1, 10, 1): 
-    
         if solve(grid, row, col, num,constraint):
-        
             grid[row][col] = num
             if Suduko(grid, row, col + 1,constraint):
                 return True
