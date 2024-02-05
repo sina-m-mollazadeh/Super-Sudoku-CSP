@@ -28,11 +28,11 @@ print("")
 #all the inputs
 array = []
 for i in range(1,10):
-    row_input = (str(read_specific_line('testCase2.txt',i))).split()
+    row_input = (str(read_specific_line('testCase3.txt',i))).split()
     row = [int(num) for num in row_input]
     array.append(row)
 formatted_input = []
-num_cases=(int(str((read_specific_line('testCase2.txt',10)))))
+num_cases=(int(str((read_specific_line('testCase3.txt',10)))))
 
 
 
@@ -42,7 +42,7 @@ num_cases=(int(str((read_specific_line('testCase2.txt',10)))))
 left_numbers=[]
 right_conditions=[]
 for i in range(1,num_cases+1):
-    case_input = (str(read_specific_line('testCase2.txt',i+10))).split()
+    case_input = (str(read_specific_line('testCase3.txt',i+10))).split()
     split_index = case_input.index('>')
     left_numbers.append([int(num) for num in case_input[:split_index]])
     right_conditions.append([int (num) for num in case_input[split_index + 1:]])
@@ -57,9 +57,9 @@ left_conditions = [[[int(digit)-1 for digit in str(number)] for number in sublis
 
 
 
-
-if (Suduko(array, 0, 0,zip(left_conditions, right_conditions))):
+candidates=[]
+if (Suduko(array, 0, 0,zip(left_conditions, right_conditions),candidates)):
     print_grid(array)
 else:
-    print("Solution does not exist:(")
+    print("Solution does not exist :(")
 # Print the solution
