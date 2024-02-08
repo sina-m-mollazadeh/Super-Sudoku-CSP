@@ -57,14 +57,11 @@ left_conditions=[]
 left_conditions = [[[int(digit)-1 for digit in str(number)] for number in sublist] for sublist in left_numbers]
 
 
-
 candidates=[]
-print_grid(array)
 if (Suduko(array, 0, 0,zip(left_conditions, right_conditions))):
     print_grid(array)
 else:
     list=SudukoWithBacktrack(array2, 0, 0,zip(left_conditions, right_conditions),candidates)
-    print(list)
     if (list):
         print_grid(array)
     else:

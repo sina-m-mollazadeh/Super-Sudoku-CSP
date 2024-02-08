@@ -23,17 +23,13 @@ def constraintCheck(grid, row, col, num, constraints):
     
     # Iterate over each constraint
     for constraint in constraints:
-        print(row,col)
 
         left = constraint[0][0]
         right = constraint[1][0]
         total = 0
         if grid[left[0]][left[1]] == 0:
-                print("left",grid[left[0]][left[1]])
                 total = 0
                 break
-        print(left)
-        print("left",grid[left[0]][left[1]])
 
         total += grid[left[0]][left[1]]
         
